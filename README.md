@@ -4,22 +4,6 @@ This project is an end-to-end machine learning solution for predicting credit ri
 
 ---
 
-## 📁 Table of Contents
-
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Tech Stack](#tech-stack)
-- [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-- [Modeling](#modeling)
-- [Model Performance](#model-performance)
-- [Feature Importance](#feature-importance)
-- [Web Application (Flask)](#web-application-flask)
-- [Installation & Running the App](#installation--running-the-app)
-- [Conclusion & Future Work](#conclusion--future-work)
-- [License](#license)
-
----
-
 ## 📌 Overview
 
 Credit risk prediction is crucial for financial institutions to assess the likelihood of a customer defaulting on a loan. This project uses various machine learning models, selects the best one through evaluation metrics, and deploys it using a user-friendly web interface built with Flask.
@@ -28,7 +12,7 @@ Credit risk prediction is crucial for financial institutions to assess the likel
 
 ## 📊 Dataset
 
-- **Source**: [UCI German Credit Dataset](https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data))
+- **Source**: [Kaggle]([https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)](https://www.kaggle.com/datasets/kabure/german-credit-data-with-risk))
 - **Records**: 1000 applicants
 - **Features**: 20 attributes (mix of numerical and categorical)
 - **Target**: Credit Risk (`Good` / `Bad`)
@@ -111,3 +95,9 @@ Missing values in `Saving accounts` or `Checking account` will be treated as `"u
 ```bash
 git clone https://github.com/your-username/german-credit-risk-prediction.git
 cd german-credit-risk-prediction
+```
+## Ensure your trained model (credit_risk_gradient_boosting.pkl) is in the root folder.
+Run the Flask app:
+```bash
+python app.py
+```
