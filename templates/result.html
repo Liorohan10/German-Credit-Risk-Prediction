@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Risk Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+        .result-box {
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .table th {
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Credit Risk Prediction Result</h1>
+        
+        <div class="result-box bg-{{ risk_class }}">
+            <h2 class="text-white text-center">{{ prediction }}</h2>
+            <p class="text-white text-center">Confidence: {{ probability }}%</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Applicant Information</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Age</th>
+                        <td>{{ user_data['Age'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sex</th>
+                        <td>{{ user_data['Sex'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Job</th>
+                        <td>{{ user_data['Job'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Housing</th>
+                        <td>{{ user_data['Housing'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Saving Accounts</th>
+                        <td>{{ user_data['Saving accounts'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Checking Account</th>
+                        <td>{{ user_data['Checking account'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Credit Amount</th>
+                        <td>{{ user_data['Credit amount'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Duration (months)</th>
+                        <td>{{ user_data['Duration'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Purpose</th>
+                        <td>{{ user_data['Purpose'].values[0] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Credit per Month</th>
+                        <td>{{ user_data['Credit per month'].values[0]|round(2) }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">Predict Another</a>
+        </div>
+    </div>
+    
+    <footer class="container text-center mt-4">
+        <p class="text-muted">Credit Risk Prediction Model - German Credit Dataset</p>
+    </footer>
+</body>
+</html>

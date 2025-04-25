@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Batch Prediction Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+        .stats-card {
+            margin-bottom: 30px;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Batch Prediction Results</h1>
+        
+        <div class="row stats-card">
+            <div class="col-md-4">
+                <div class="card bg-success text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Good Credit Risk</h5>
+                        <h2>{{ good_count }}</h2>
+                        <p>{{ (good_count / total * 100)|round(1) }}% of applicants</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-danger text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Bad Credit Risk</h5>
+                        <h2>{{ bad_count }}</h2>
+                        <p>{{ (bad_count / total * 100)|round(1) }}% of applicants</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-primary text-white">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Total Applicants</h5>
+                        <h2>{{ total }}</h2>
+                        <p>100% of applicants</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Detailed Results</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    {{ table|safe }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/batch_predict" class="btn btn-primary">Upload Another File</a>
+            <a href="/" class="btn btn-outline-secondary ml-2">Back to Individual Prediction</a>
+        </div>
+    </div>
+    
+    <footer class="container text-center mt-4">
+        <p class="text-muted">Credit Risk Prediction Model - German Credit Dataset</p>
+    </footer>
+</body>
+</html>

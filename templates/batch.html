@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Batch Credit Risk Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+        .nav-pills {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Batch Credit Risk Prediction</h1>
+        
+        <ul class="nav nav-pills nav-justified mb-4">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Individual Prediction</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/batch_predict">Batch Prediction</a>
+            </li>
+        </ul>
+        
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Upload CSV File</h4>
+            </div>
+            <div class="card-body">
+                {% if error %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+                {% endif %}
+                
+                <form action="/batch_predict" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file">Select CSV file with applicant data:</label>
+                        <input type="file" class="form-control-file" id="file" name="file" accept=".csv" required>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <h5>CSV Format Requirements:</h5>
+                        <p>Your CSV file should contain the following columns:</p>
+                        <ul>
+                            <li>Age (numeric)</li>
+                            <li>Sex (male/female)</li>
+                            <li>Job (0-3)</li>
+                            <li>Housing (own/rent/free)</li>
+                            <li>Saving accounts (little/moderate/quite rich/rich)</li>
+                            <li>Checking account (little/moderate/rich)</li>
+                            <li>Credit amount (numeric)</li>
+                            <li>Duration (months, numeric)</li>
+                            <li>Purpose (car/furniture/equipment/radio/TV/etc.)</li>
+                        </ul>
+                        <p>Missing values in 'Saving accounts' and 'Checking account' will be treated as 'unknown'.</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">Upload and Predict</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-outline-secondary">Back to Individual Prediction</a>
+        </div>
+    </div>
+    
+    <footer class="container text-center mt-4">
+        <p class="text-muted">Credit Risk Prediction Model - German Credit Dataset</p>
+    </footer>
+</body>
+</html>
