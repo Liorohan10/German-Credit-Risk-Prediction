@@ -96,7 +96,7 @@ Missing values in `Saving accounts` or `Checking account` will be treated as `"u
 git clone https://github.com/your-username/german-credit-risk-prediction.git
 cd german-credit-risk-prediction
 ```
-## Ensure your trained model (credit_risk_gradient_boosting.pkl) is in the root folder.
+Ensure your trained model (credit_risk_gradient_boosting.pkl) is in the root folder.
 Run the Flask app:
 ```bash
 python app.py
